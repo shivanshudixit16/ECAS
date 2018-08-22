@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DatabaseConnection;
+
 /**
  * Servlet Filter implementation class AdminFilter
  */
@@ -31,17 +33,29 @@ public class TeacherFilter implements Filter {
 			if(user==null)
 			{ 
 			  res.sendRedirect("index.jsp");
+			  return;
 			}
 			else {
 			String pass=request.getParameter("tpassword");
-			if(user.equals("teacher") && pass.equals("teacher"))
+			DatabaseConnection dc = new DatabaseConnection();
+			String dpass=dc.getPass(user);
+			if(dpass==null)
+			{
+			req.setAttribute("tfmsg","User name Does not Exsists");
+				req.getRequestDispatcher("teacher_login.jsp").forward(req, res);
+				return;
+			}
+			if(pass.equals(dpass))
 			{
 				session.setAttribute("tusername", user);
 				chain.doFilter(req, res);
+				
 			}
 			else
 			{
-				res.sendRedirect("teacher_login.jsp");
+				req.setAttribute("tfmsg","Wrong Password");
+				req.getRequestDispatcher("teacher_login.jsp").forward(req, res);
+				
 			}
 			
 			}

@@ -36,6 +36,14 @@ body {
 </style>
 </head>
 <body>
+<%if(session.getAttribute("logged")!=null) {
+	out.println("<script>alert(\"you are already loged in as a "+session.getAttribute("logged")+"\");</script>");
+	session.removeAttribute("logged");
+}
+%>
+<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0");%>
 <div class="topnav">
   <a href="teacher_login.jsp">Teacher Login</a>
   <a href="admin_login.jsp">Admin Login</a>
@@ -43,7 +51,7 @@ body {
   
 </div>
 
-<p><a href="formpage.html">View Admitcard</a></p>
+<p><a href="admitform.jsp">View Admitcard</a></p>
 <p><a href="formpage.html">View Marksheet</a></p>
 
 </body>

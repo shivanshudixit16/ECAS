@@ -27,6 +27,10 @@
   </filter-mapping>
   <filter-mapping>
   	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/generate_rolls.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
   	<url-pattern>/student_reg.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
@@ -41,12 +45,42 @@
     <servlet-name>studentsubmit</servlet-name>
     <servlet-class>StudentSubmit</servlet-class>
   </servlet>
+   <servlet>
+   	<servlet-name>ImageSend</servlet-name>
+   	<display-name>ImageSend</display-name>
+   	<description></description>
+   	<servlet-class>imagehandler.ImageSend</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>GenerateRolls</servlet-name>
+   	<display-name>GenerateRolls</display-name>
+   	<description></description>
+   	<servlet-class>general.GenerateRolls</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>GetAdmit</servlet-name>
+   	<display-name>GetAdmit</display-name>
+   	<description></description>
+   	<servlet-class>general.GetAdmit</servlet-class>
+   </servlet>
    <servlet-mapping>
     <servlet-name>teachersubmit</servlet-name>
-    <url-pattern> /teacher_regsubmit</url-pattern>
+    <url-pattern>/teacher_regsubmit</url-pattern>
   </servlet-mapping>
    <servlet-mapping>
     <servlet-name>studentsubmit</servlet-name>
-    <url-pattern> /student_regsubmit</url-pattern>
+    <url-pattern>/student_regsubmit</url-pattern>
   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>ImageSend</servlet-name>
+   	<url-pattern>/ImageSend</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>GenerateRolls</servlet-name>
+   	<url-pattern>/genroll</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>GetAdmit</servlet-name>
+   	<url-pattern>/getadmit</url-pattern>
+   </servlet-mapping>
 </web-app>

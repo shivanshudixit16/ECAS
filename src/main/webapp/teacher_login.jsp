@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <% 
+session=request.getSession(false);
 if(session.getAttribute("tusername")!=null)
 {
  response.sendRedirect("teacher_home.jsp");	
 }
 if(session.getAttribute("ausername")!=null)
 {
+
+session.setAttribute("logged","admin");
 response.sendRedirect("index.jsp");
 }%>
-<!DOCTYPE html>
+<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0");%>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -27,7 +33,8 @@ response.sendRedirect("index.jsp");
             <div class="imagebg"></div>
             <div class="container">
                 <div class="form-container z-depth-5">
-                    <h3>LOGIN</h3> 
+                    <h3>Teacher Login</h3>
+                    <font color="red"><% Object s=request.getAttribute("tfmsg");if(s!=null){out.write(s.toString());request.removeAttribute("afmsg");}%></font> 
                     <div class="row">
                         <form class="col s12" id="reused_form" action="teacher_home.jsp" method="post">
                             <div class="row">

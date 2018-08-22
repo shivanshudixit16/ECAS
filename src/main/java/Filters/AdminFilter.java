@@ -31,6 +31,7 @@ public class AdminFilter implements Filter {
 			if(user==null)
 			{ 
 			  res.sendRedirect("index.jsp");
+			 
 			}
 			else {
 			String pass=request.getParameter("apassword");
@@ -38,10 +39,14 @@ public class AdminFilter implements Filter {
 			{
 				session.setAttribute("ausername", user);
 				chain.doFilter(req, res);
+				
 			}
 			else
 			{
-				res.sendRedirect("admin_login.jsp");
+				req.setAttribute("afmsg","Wrong Credentials");
+				req.getRequestDispatcher("admin_login.jsp").forward(req, res);
+			
+				
 			}
 			
 			}
