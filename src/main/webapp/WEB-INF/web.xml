@@ -17,6 +17,12 @@
   	<description></description>
   	<filter-class>Filters.TeacherFilter</filter-class>
   </filter>
+  <filter>
+  	<filter-name>StudentFilter</filter-name>
+  	<display-name>StudentFilter</display-name>
+  	<description></description>
+  	<filter-class>Filters.StudentFilter</filter-class>
+  </filter>
   <filter-mapping>
   	<filter-name>AdminFilter</filter-name>
   	<url-pattern>/teacher_reg.jsp</url-pattern>
@@ -26,8 +32,12 @@
   	<url-pattern>/admin_home.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
-  	<filter-name>TeacherFilter</filter-name>
+  	<filter-name>AdminFilter</filter-name>
   	<url-pattern>/generate_rolls.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/assign_exam_center.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
   	<filter-name>TeacherFilter</filter-name>
@@ -36,6 +46,10 @@
   <filter-mapping>
   	<filter-name>TeacherFilter</filter-name>
   	<url-pattern>/teacher_home.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>StudentFilter</filter-name>
+  	<url-pattern>/exam_form.jsp</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>teachersubmit</servlet-name>
@@ -63,6 +77,12 @@
    	<description></description>
    	<servlet-class>general.GetAdmit</servlet-class>
    </servlet>
+   <servlet>
+   	<servlet-name>AssignExamCenter</servlet-name>
+   	<display-name>AssignExamCenter</display-name>
+   	<description></description>
+   	<servlet-class>general.AssignExamCenter</servlet-class>
+   </servlet>
    <servlet-mapping>
     <servlet-name>teachersubmit</servlet-name>
     <url-pattern>/teacher_regsubmit</url-pattern>
@@ -82,5 +102,9 @@
    <servlet-mapping>
    	<servlet-name>GetAdmit</servlet-name>
    	<url-pattern>/getadmit</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>AssignExamCenter</servlet-name>
+   	<url-pattern>/assignexamcenter</url-pattern>
    </servlet-mapping>
 </web-app>

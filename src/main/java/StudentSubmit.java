@@ -40,12 +40,14 @@ public class StudentSubmit extends HttpServlet {
 		String stdemail=request.getParameter("stdemail");
 		String stdcontact=request.getParameter("stdcontact");
 		String fathername=request.getParameter("fathername");
+		
+		String gender=request.getParameter("gender");
 		String dob=request.getParameter("dob");
 		Connection con=DatabaseConnection.getCon();
 		PreparedStatement ps;
 		try {
 			InputStream st=null;
-			ps = con.prepareStatement("insert into studentinfo values(?,?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("insert into studentinfo values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1, stdname);
 			ps.setString(2, course);
 			ps.setString(3, branch);
@@ -62,6 +64,8 @@ public class StudentSubmit extends HttpServlet {
 			}
 			ps.setBlob(10, st);
 			ps.setString(11, null);
+			ps.setString(12, gender);
+			ps.setString(13,"1");
 			ps.execute();
 			
 			out.write("Student Registered SuccessFully");

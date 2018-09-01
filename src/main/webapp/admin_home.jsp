@@ -11,6 +11,7 @@ response.setHeader("Expires", "0");
 <body>
 <div><a href="logout.jsp">Logout</a></div><br>
 <h3><a href="teacher_reg.jsp">Add Teachers></a></h3><br>
-<h2><a href="generate_rolls.jsp">Generate Roll No.></a></h2><br>
+<h3><a href="generate_rolls.jsp">Generate Roll No.></a></h3><br>
+<h3><a href="assign_exam_center.jsp">Assign Exam Center></a></h3><br>
 </body>
 </html>

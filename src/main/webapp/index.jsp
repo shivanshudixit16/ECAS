@@ -47,11 +47,10 @@ response.setHeader("Expires", "0");%>
 <div class="topnav">
   <a href="teacher_login.jsp">Teacher Login</a>
   <a href="admin_login.jsp">Admin Login</a>
-  <a href="#">Fill Examform</a>
+  <a href="student_login.jsp">Fill Examform</a>
   
 </div>
-
-<p><a href="admitform.jsp">View Admitcard</a></p>
+<p><a href="admit_form.jsp">View Admitcard</a></p>
 <p><a href="formpage.html">View Marksheet</a></p>
 
 </body>

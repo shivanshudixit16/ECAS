@@ -11,6 +11,41 @@ public class Student {
     public String fathername;
     public String dob;	
     public String roll;
+	public String gender;
+	public String collegecode;
+	public String centername;
+	public String semester;
+	public String getSemester() {
+		return semester;
+	}
+	public void setSemester(String semester) {
+		this.semester = semester;
+	}
+	public String getCentername() {
+		return centername;
+	}
+	public void setCentername(String centername) {
+		this.centername = centername;
+	}
+	public String getCentercode() {
+		return centercode;
+	}
+	public void setCentercode(String centercode) {
+		this.centercode = centercode;
+	}
+	public String centercode;
+	public String getCollegecode() {
+		return collegecode;
+	}
+	public void setCollegecode(String collegecode) {
+		this.collegecode = collegecode;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getName() {
 		return name;
 	}

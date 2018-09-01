@@ -10,6 +10,8 @@ response.setHeader("Expires", "0");%>
       <form action="student_regsubmit" method="post" enctype="multipart/form-data">
          Student Name:<br><input type="text" name="stdname" required><br><br>
          Father's Name:<br><input type="text" name="fathername" required><br><br>
+         Gender:<input type="radio" name="gender" value="male" checked> Male  
+  		<input type="radio" name="gender" value="female"> Female<br><br>
          Date Of Birth<br><input type="date" name="dob" required><br><br>
         
         College<select name="clgname" required>

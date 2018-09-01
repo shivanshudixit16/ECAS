@@ -1,27 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<% 
+<%
 session=request.getSession(false);
-if(session.getAttribute("tusername")!=null)
-{
- response.sendRedirect("teacher_home.jsp");	
-}
 if(session.getAttribute("ausername")!=null)
 {
-
 session.setAttribute("logged","admin");
+ response.sendRedirect("index.jsp");
+}
+if(session.getAttribute("tusername")!=null)
+{
+session.setAttribute("logged","teacher");
 response.sendRedirect("index.jsp");
 }
 if(session.getAttribute("susername")!=null)
 {
-session.setAttribute("logged","student");
-response.sendRedirect("index.jsp");
+response.sendRedirect("exam_form.jsp");
 }
-%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+ %>
+ <%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setHeader("Expires", "0");%>
-
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -32,26 +31,26 @@ response.setHeader("Expires", "0");%>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <link rel="stylesheet" href="form.css" >
-        
+       
     </head>
     <body >
         <div class="container">
             <div class="imagebg"></div>
             <div class="container">
                 <div class="form-container z-depth-5">
-                    <h3>Teacher Login</h3>
-                    <font color="red"><% Object s=application.getAttribute("tfmsg");if(s!=null){out.write(s.toString());application.removeAttribute("tfmsg");}%></font> 
+                    <h3>Student Login</h3> 
+                    <font color="red"><%  Object s=application.getAttribute("sfmsg");if(s!=null){out.write(s.toString());application.removeAttribute("sfmsg");}%></font>
                     <div class="row">
-                        <form class="col s12" id="reused_form" action="teacher_home.jsp" method="post">
+                        <form class="col s12" id="reused_form" action="exam_form.jsp" method="post">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" type="text" name="tusername" required class="validate">
+                                    <input id="name" type="text" name="susername" required class="validate">
                                     <label for="name">User Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" type="password" name="tpassword" required class="validate">
+                                    <input id="email" type="password" name="spassword" required class="validate">
                                     <label for="email">password</label>
                                 </div>
                             </div>

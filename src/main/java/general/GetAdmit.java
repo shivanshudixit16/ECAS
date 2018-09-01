@@ -22,11 +22,11 @@ public class GetAdmit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String header,sem;
 		String roll=request.getParameter("roll_no");
 		try {
 			Connection con=DatabaseConnection.getCon();
-			PreparedStatement p=con.prepareStatement("select STDNAME,COURSE,BRANCH,BATCH,CLGNAME,STDEMAIL,STDCONTACT,FATHER_NAME,DOB from studentinfo where roll_no=?");
+			PreparedStatement p=con.prepareStatement("select STDNAME,COURSE,BRANCH,BATCH,CLGNAME,STDEMAIL,STDCONTACT,FATHER_NAME,DOB,gender,semester from studentinfo where roll_no=?");
 			p.setString(1, roll);
 			ResultSet rs= p.executeQuery();
 			Student stud = new Student();
@@ -42,6 +42,21 @@ public class GetAdmit extends HttpServlet {
 				 stud.fathername=rs.getString(8);
 				 stud.dob=rs.getString(9);	
 				 stud.roll=roll;
+				 stud.gender=rs.getString(10);
+				 stud.collegecode=new DatabaseConnection().getCollegeCode(stud.clgname);
+				 stud.centername=new DatabaseConnection().getCenter(stud.clgname);
+				 stud.centercode=new DatabaseConnection().getCollegeCode(stud.centername);
+				 stud.semester=rs.getString(11);
+				 if(Integer.parseInt(stud.semester) % 2==0)
+				 {
+					 sem="Even";
+				 }
+				 else
+				 {
+					 sem="Odd";
+				 }
+				 header=sem+" Semester 2017-18 Examination Admit Card";
+				 request.setAttribute("header",header);
 				 request.setAttribute("student",stud);
 				 RequestDispatcher rd=request.getRequestDispatcher("admit_card.jsp");
 				 rd.forward(request, response);

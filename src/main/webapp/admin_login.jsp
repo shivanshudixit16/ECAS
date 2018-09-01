@@ -11,6 +11,11 @@ if(session.getAttribute("tusername")!=null)
 session.setAttribute("logged","teacher");
 response.sendRedirect("index.jsp");
 }
+if(session.getAttribute("susername")!=null)
+{
+session.setAttribute("logged","student");
+response.sendRedirect("index.jsp");
+}
  %>
  <%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -34,7 +39,7 @@ response.setHeader("Expires", "0");%>
             <div class="container">
                 <div class="form-container z-depth-5">
                     <h3>Admin Login</h3> 
-                    <font color="red"><%  Object s=request.getAttribute("afmsg");if(s!=null){out.write(s.toString());request.removeAttribute("afmsg");}%></font>
+                    <font color="red"><%  Object s=application.getAttribute("afmsg");if(s!=null){out.write(s.toString());application.removeAttribute("afmsg");}%></font>
                     <div class="row">
                         <form class="col s12" id="reused_form" action="admin_home.jsp" method="post">
                             <div class="row">

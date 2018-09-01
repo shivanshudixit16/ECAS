@@ -30,8 +30,8 @@
 <div id="main">
 <div id="main1">
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/8/86/Aktu_logo.png" type="image/png" sizes="16x16">
-<center><img src="https://erp.aktu.ac.in/Images/Site/AKTUBanner.jpg" alt="photo" height = "100" width="900"></center>
-<center><h3>Even Semester 2017-18 Examination Admit Card</h3></center>
+<center><img src="<%=URI.create(request.getRequestURL().toString()).resolve(request.getContextPath())%>/images/aktubanner.jpg" alt="photo" height = "100" width="900"></center>
+<center><h3><%=request.getAttribute("header")%></h3></center>
 <table style="width: 100%;">
 <tbody><tr><td colspan="2"><hr></td></tr>
     <tr>
@@ -66,7 +66,7 @@
 				<span id="Gender" style="font-weight: bold;">Gender</span></td>
 			<td><b>:</b></td>
 			<td>
-				<span id="Sex">M </span>
+				<span id="Sex"><%=stud.gender%></span>
 			</td>
 		</tr>
 		<tr>
@@ -82,7 +82,7 @@
 				<span id="Institute" style="font-weight: bold;">Institute</span></td>
 			<td><b>:</b></td>
 			<td>
-				<span id="InstituteId">(014)</span>
+				<span id="InstituteId">(<%=stud.collegecode%>)</span>
 				<span id="InstituteName"><%=stud.clgname%></span>
 			</td>
 		</tr>
@@ -108,7 +108,7 @@
 				<span id="Semester" style="font-weight: bold;">Semester</span></td>
 			<td><b>:</b></td>
 			<td>
-				<span id="SemesterID">4</span>
+				<span id="SemesterID"><%=stud.semester%></span>
 			</td>
 		</tr>
 		<tr>
@@ -116,7 +116,7 @@
 				<span id="Examination Center Code" style="font-weight: bold;">Examination Center Code</span></td>
 			<td><b>:</b></td>
 			<td>
-				<span id="Examination_Center_Code_ID">474</span>
+				<span id="Examination_Center_Code_ID"><%=stud.centercode %></span>
 			</td>
 		</tr>
 		<tr>
@@ -124,7 +124,7 @@
 				<span id="Examination_Center_Name" style="font-weight: bold;">Examination Center Name</span></td>
 			<td><b>:</b></td>
 			<td>
-				<span id="Examination_Center_Name_ID">Shri Siddhi Vinayak Institute Of Technology, Bareilly</span>
+				<span id="Examination_Center_Name_ID"><%=stud.centername%></span>
 			</td>
 		</tr>
 		</tbody></table>
@@ -199,7 +199,7 @@
 			<tbody><tr>
 				<td style="width: 80%; text-align: left;">
 				</td>
-				<td style="width: 20%; text-align: center;"><strong><img id="ctl01_imgCOESign" src="https://erp.aktu.ac.in/Images/Site/COESign.png" style="height:50px;width: 100px; margin-top: 2px;"></strong></td>
+				<td style="width: 20%; text-align: center;"><strong><img id="ctl01_imgCOESign" src="<%=URI.create(request.getRequestURL().toString()).resolve(request.getContextPath())%>/images/coesign.jpg" style="height:50px;width: 100px; margin-top: 2px;"></strong></td>
 				</tr>
 				<tr>
 					<td style="width: 30%; text-align: left;">

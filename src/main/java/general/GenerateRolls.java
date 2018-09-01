@@ -33,11 +33,14 @@ public class GenerateRolls extends HttpServlet {
 			p.setString(3, branch);
 			p.setString(4, batch);
 			ResultSet rs=p.executeQuery();
-			String roll="1601410";
+			DatabaseConnection db= new DatabaseConnection();
+			String roll;
+			String cc=db.getCollegeCode(college);
+			String bc=db.getBranchCode(course,branch);
 			int num=0;
 			while(rs.next())
 			{
-				roll="1601410";
+				roll=batch.substring(batch.length()-2)+cc+bc;
 				PrintWriter out=response.getWriter();
 				String mail=rs.getString(1);
 				String proll=null;
