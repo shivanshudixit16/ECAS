@@ -1,6 +1,12 @@
+<%@page import="database.DatabaseConnection,java.util.ArrayList"%>
 <%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setHeader("Expires", "0");%>
+<%
+	ArrayList<String> college=new DatabaseConnection().getAllCollege(); 
+ 	ArrayList<String> branches= new DatabaseConnection().getAllBranches();
+ 	ArrayList<String> courses= new DatabaseConnection().getAllCourses();
+ %>
 <!DOCTYPE html>
 <html>
    <body>
@@ -15,27 +21,16 @@ response.setHeader("Expires", "0");%>
          Date Of Birth<br><input type="date" name="dob" required><br><br>
         
         College<select name="clgname" required>
-  			  <option value="" selected disabled hidden>Choose College</option>
-			  <option value="SRMS">SRMS</option>
-			  <option value="KIET">KIET</option>
-			  <option value="RKGIT">RKGIT</option>
-			  <option value="AKG">AKG</option>
-			  <option value="HBTI">HBTI</option>
+  			 <%for(String co:college){%><option value="<%=co%>"><%=co%></option><%}%>
 		</select><br><br>
 		Course<select name="course" required>
   			  <option value="" selected disabled hidden>Choose Course</option>
-			  <option value="B.Tech.">B.Tech.</option>
-			  <option value="M.Tech.">M.Tech.</option>
+			 <%for(String cr:courses){%><option value="<%=cr%>"><%=cr%></option><%}%>
 			</select><br><br>
 		Branch<select name="branch" required>
-			  <option value="" selected disabled hidden>Choose Branch</option>
-			  <option value="CSE">CSE</option>
-			  <option value="IT">IT</option>
-			  <option value="EC">EC</option>
-			  <option value="EN">EN</option>
-			  <option value="CIVIL">CIVIL</option>
+			 <%for(String br:branches){%><option value="<%=br%>"><%=br%></option><%}%>
  		 </select><br><br>
- 		 Batch<input type="text" name="batch" required><br><br>
+ 		 Batch<input type="text" name="batch" value="<%=new DatabaseConnection().getCurrentSession() %>" readonly><br><br>
          Student Email:<br> <input type="email" name="stdemail" required><br><br>
          Student ContactNo:<br> <input type="number" name="stdcontact" required><br><br>
          Upload Your Photo  <input type="file" name="photo" accept="image/*" > <br>

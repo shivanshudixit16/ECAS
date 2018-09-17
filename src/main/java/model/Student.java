@@ -14,11 +14,11 @@ public class Student {
 	public String gender;
 	public String collegecode;
 	public String centername;
-	public String semester;
-	public String getSemester() {
+	public int semester;
+	public int getSemester() {
 		return semester;
 	}
-	public void setSemester(String semester) {
+	public void setSemester(int semester) {
 		this.semester = semester;
 	}
 	public String getCentername() {

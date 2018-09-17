@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.Student"  import="java.net.URI"%>
+    pageEncoding="ISO-8859-1" import="model.*,java.util.*"  import="java.net.URI"%>
     <%
     Student stud=(Student)request.getAttribute("student");
     if(stud==null){
     response.sendRedirect("admitform.jsp");
-    } %>
+    } 
+    ArrayList<Subject> subjects=(ArrayList<Subject>)request.getAttribute("subjects");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <title>Admit Card</title>
@@ -148,27 +149,15 @@
 	<table cellspacing="0" rules="all" border="1" id="ctl01_grdSubject" style="border-collapse:collapse;width: 100%;">
 		<tbody><tr>
 			<th scope="col">Subject Code</th><th scope="col">Subject Name</th><th scope="col">Exam Date*</th><th scope="col">Timings</th><th scope="col">AnsBookNo.</th>
-		</tr><tr>
-			<td>ROE042</td><td>Nano Science</td><td>14/05/2018</td><td>9.30AM-12.30PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS401</td><td>Operating Systems</td><td>16/05/2018</td><td>9.30AM-12.30PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS403</td><td>Theory of Automata and Formal Languages</td><td>18/05/2018</td><td>9.30AM-12.30PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>REC405</td><td>Introduction to Microprocessor</td><td>23/05/2018</td><td>9.30AM-12.30PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS402</td><td>Software Engineering</td><td>25/05/2018</td><td>9.30AM-12.30PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RAS402</td><td>Environment &amp; Ecology</td><td>26/05/2018</td><td>2.00PM-05.00PM</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS451</td><td>Operating Systems Lab</td><td>NA</td><td>&nbsp;</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS452</td><td>Software Engineering Lab</td><td>NA</td><td>&nbsp;</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS453</td><td>TAFL Lab</td><td>NA</td><td>&nbsp;</td><td>&nbsp;</td>
-		</tr><tr>
-			<td>RCS454</td><td>Python Language Programming Lab</td><td>NA</td><td>&nbsp;</td><td>&nbsp;</td>
 		</tr>
+		<%for(Subject sub:subjects)
+		{%>
+		<tr>
+		<td><%=sub.subcode%></td><td><%=sub.subname%></td><td><%=sub.date%></td><td><%=sub.time %></td><td>&nbsp;</td>
+		</tr>
+		<%
+		}
+		%>
 	</tbody></table>
 	</td></tr></tbody></table>
 	<tr>

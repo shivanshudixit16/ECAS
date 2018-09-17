@@ -30,20 +30,18 @@ public class TeacherSubmit extends HttpServlet {
 		String temail=request.getParameter("temail");
 		String tno=request.getParameter("tno");
 		String tcname=request.getParameter("tcname");
-		String tccode=request.getParameter("tccode");
 		Connection con=DatabaseConnection.getCon();
 		PreparedStatement ps;
 		try {
 			EmailOperation eo = new EmailOperation();
 			String pass=eo.code;
 			System.out.print(pass);
-			ps = con.prepareStatement("insert into teacherinfo values(?,?,?,?,?,?)");
+			ps = con.prepareStatement("insert into teacherinfo values(?,?,?,?,?)");
 			ps.setString(1, tname);
 			ps.setString(2, temail);
 			ps.setLong(3, Long.parseLong(tno));
 			ps.setString(4, tcname);
-			ps.setInt(5, Integer.parseInt(tccode));
-			ps.setString(6, pass);
+			ps.setString(5, pass);
 			ps.execute();
 			eo.sendMail(temail);
 			
@@ -56,10 +54,12 @@ public class TeacherSubmit extends HttpServlet {
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			out.write(e+" ");
+			e.printStackTrace();
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			out.write(e+"   ");
+			e.printStackTrace();
 		}
 		
 		

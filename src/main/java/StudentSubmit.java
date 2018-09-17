@@ -65,7 +65,7 @@ public class StudentSubmit extends HttpServlet {
 			ps.setBlob(10, st);
 			ps.setString(11, null);
 			ps.setString(12, gender);
-			ps.setString(13,"1");
+			ps.setInt(13,1);
 			ps.execute();
 			
 			out.write("Student Registered SuccessFully");

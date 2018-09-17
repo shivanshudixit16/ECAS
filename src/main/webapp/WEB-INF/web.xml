@@ -51,6 +51,14 @@
   	<filter-name>StudentFilter</filter-name>
   	<url-pattern>/exam_form.jsp</url-pattern>
   </filter-mapping>
+    <filter-mapping>
+  	<filter-name>StudentFilter</filter-name>
+  	<url-pattern>/student_home.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    	<filter-name>StudentFilter</filter-name>
+    	<servlet-name>ExamForm</servlet-name>
+    </filter-mapping>
   <servlet>
     <servlet-name>teachersubmit</servlet-name>
     <servlet-class>TeacherSubmit</servlet-class>
@@ -83,6 +91,66 @@
    	<description></description>
    	<servlet-class>general.AssignExamCenter</servlet-class>
    </servlet>
+   <servlet>
+   	<servlet-name>SubmitExamForm</servlet-name>
+   	<display-name>SubmitExamForm</display-name>
+   	<description></description>
+   	<servlet-class>general.SubmitExamForm</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>ExamForm</servlet-name>
+   	<display-name>ExamForm</display-name>
+   	<description></description>
+   	<servlet-class>general.ExamForm</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SessionStart</servlet-name>
+   	<display-name>SessionStart</display-name>
+   	<description></description>
+   	<servlet-class>SessionStart</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>StartSemester</servlet-name>
+   	<display-name>StartSemester</display-name>
+   	<description></description>
+   	<servlet-class>StartSemester</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitExamDates</servlet-name>
+   	<display-name>SubmitExamDates</display-name>
+   	<description></description>
+   	<servlet-class>SubmitExamDates</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitSubjectsForSession</servlet-name>
+   	<display-name>SubmitSubjectsForSession</display-name>
+   	<description></description>
+   	<servlet-class>SubmitSubjectsForSession</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>InternalMarksFetchSubjects</servlet-name>
+   	<display-name>InternalMarksFetchSubjects</display-name>
+   	<description></description>
+   	<servlet-class>InternalMarksFetchSubjects</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitInternalMarks</servlet-name>
+   	<display-name>SubmitInternalMarks</display-name>
+   	<description></description>
+   	<servlet-class>SubmitInternalMarks</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>ExternalMarksFetchSubjects</servlet-name>
+   	<display-name>ExternalMarksFetchSubjects</display-name>
+   	<description></description>
+   	<servlet-class>ExternalMarksFetchSubjects</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitExternalMarks</servlet-name>
+   	<display-name>SubmitExternalMarks</display-name>
+   	<description></description>
+   	<servlet-class>SubmitExternalMarks</servlet-class>
+   </servlet>
    <servlet-mapping>
     <servlet-name>teachersubmit</servlet-name>
     <url-pattern>/teacher_regsubmit</url-pattern>
@@ -106,5 +174,45 @@
    <servlet-mapping>
    	<servlet-name>AssignExamCenter</servlet-name>
    	<url-pattern>/assignexamcenter</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitExamForm</servlet-name>
+   	<url-pattern>/submitexamform</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>ExamForm</servlet-name>
+   	<url-pattern>/examform</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SessionStart</servlet-name>
+   	<url-pattern>/start_session</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>StartSemester</servlet-name>
+   	<url-pattern>/start_semester</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitExamDates</servlet-name>
+   	<url-pattern>/submit_exam_dates</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitSubjectsForSession</servlet-name>
+   	<url-pattern>/submitsubjectsforsession</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>InternalMarksFetchSubjects</servlet-name>
+   	<url-pattern>/internalmarksfetchsubjects</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitInternalMarks</servlet-name>
+   	<url-pattern>/submitinternalmarks</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>ExternalMarksFetchSubjects</servlet-name>
+   	<url-pattern>/externalmarksfetchsubjects</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitExternalMarks</servlet-name>
+   	<url-pattern>/submitexternalmarks</url-pattern>
    </servlet-mapping>
 </web-app>

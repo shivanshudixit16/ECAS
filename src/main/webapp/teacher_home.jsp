@@ -8,5 +8,6 @@ response.setHeader("Expires", "0");%>
 <body>
 <div><a href="logout.jsp">Logout</a></div><br>
 <h3><a href="student_reg.jsp">Add Students></a></h3>
+<h3><a href="internal_marks_choose_roll.jsp">Fill Internal marks</a></h3>
 </body>
 </html>

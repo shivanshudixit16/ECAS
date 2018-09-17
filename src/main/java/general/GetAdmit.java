@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.DatabaseConnection;
 import model.Student;
+import model.Subject;
 
 /**
  * Servlet implementation class GetAdmit
@@ -46,8 +48,8 @@ public class GetAdmit extends HttpServlet {
 				 stud.collegecode=new DatabaseConnection().getCollegeCode(stud.clgname);
 				 stud.centername=new DatabaseConnection().getCenter(stud.clgname);
 				 stud.centercode=new DatabaseConnection().getCollegeCode(stud.centername);
-				 stud.semester=rs.getString(11);
-				 if(Integer.parseInt(stud.semester) % 2==0)
+				 stud.semester=rs.getInt(11);
+				 if(stud.semester% 2==0)
 				 {
 					 sem="Even";
 				 }
@@ -55,9 +57,34 @@ public class GetAdmit extends HttpServlet {
 				 {
 					 sem="Odd";
 				 }
-				 header=sem+" Semester 2017-18 Examination Admit Card";
+				 String cursession=""+new DatabaseConnection().getCurrentSession();
+				 String  session = cursession+"-"+(Integer.parseInt(cursession.substring(cursession.length()-2))+1);
+				 header=sem+" Semester "+session+" Examination Admit Card";
 				 request.setAttribute("header",header);
 				 request.setAttribute("student",stud);
+				 p=con.prepareStatement("select SUB_CODE from studentsub where roll_no=? and session_start=? and semester=?");
+				 p.setString(1,stud.roll);
+				 p.setString(2,""+cursession);
+				 p.setString(3,""+stud.semester);//semester in subjects table is string but in studentsinfo is int
+			     rs=p.executeQuery();
+			     ArrayList<Subject> subjects = new ArrayList<Subject>();
+			     while(rs.next())
+			     {
+			    	 Subject sub=new Subject();
+			    	 sub.subcode=rs.getString(1);
+			    	 sub.subname=new DatabaseConnection().getSubjectName(sub.subcode);
+			    	 p=con.prepareStatement("select exam_date,exam_time from exam_dates where sub_code=? and SESSION_START=?");
+			    	 p.setString(1,sub.subcode);
+					 p.setString(2,cursession);
+					 ResultSet r1=p.executeQuery();
+					 if(r1.next())
+					 {
+						 sub.date=r1.getString(1);
+						 sub.time=r1.getString(2);
+					 }
+			    	 subjects.add(sub);
+			     }
+			     request.setAttribute("subjects",subjects);
 				 RequestDispatcher rd=request.getRequestDispatcher("admit_card.jsp");
 				 rd.forward(request, response);
 				 

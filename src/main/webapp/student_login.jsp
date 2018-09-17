@@ -14,7 +14,7 @@ response.sendRedirect("index.jsp");
 }
 if(session.getAttribute("susername")!=null)
 {
-response.sendRedirect("exam_form.jsp");
+response.sendRedirect("student_home.jsp");
 }
  %>
  <%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -41,7 +41,7 @@ response.setHeader("Expires", "0");%>
                     <h3>Student Login</h3> 
                     <font color="red"><%  Object s=application.getAttribute("sfmsg");if(s!=null){out.write(s.toString());application.removeAttribute("sfmsg");}%></font>
                     <div class="row">
-                        <form class="col s12" id="reused_form" action="exam_form.jsp" method="post">
+                        <form class="col s12" id="reused_form" action="student_home.jsp" method="post">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="name" type="text" name="susername" required class="validate">
