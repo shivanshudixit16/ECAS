@@ -47,7 +47,7 @@ public class SubmitExternalMarks extends HttpServlet {
 //			// TODO: handle exception
 //			out.write("error\n");
 //			ex.printStackTrace();
-		}
+	//	}
 	}
 
 
