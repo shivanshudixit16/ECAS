@@ -5,8 +5,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,13 +26,11 @@ public class SubmitInternalMarks extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out=response.getWriter();
-		Enumeration<String> e=request.getParameterNames();
-		Iterator<String> it=e.asIterator();
+		List<String> e = new ArrayList<String>(request.getParameterMap().keySet());
 		try {
-		while(it.hasNext())
+		for(String subcode :e)
 		{
 			
-				String subcode=it.next();
 				if(subcode.equals("semester")||subcode.equals("roll_no"))
 					continue;
 				Connection con =DatabaseConnection.getCon();
