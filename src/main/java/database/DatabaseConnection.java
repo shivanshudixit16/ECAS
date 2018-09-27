@@ -9,22 +9,28 @@ import java.util.ArrayList;
 import model.Subject;
 
 public class DatabaseConnection {
-	public static Connection getCon()
+	public static Connection getCon() 
 	{
+		Connection connection =null;
 		try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con;
-		
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shiv","1234");
-			return con;
-		} catch (SQLException e) {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
-		return null;
+
+String username = "isheuhnxufvvry";
+String password = "cba6e6a0256d969e4b2124437c7699e15c60b92e70e285af9d5ca77f9b96c11a";
+String dbUrl = "jdbc:postgresql://" + "ec2-174-129-18-98.compute-1.amazonaws.com:5432"
+		+ "/dav86kr2u6dq5b?sslmode=require";
+try {
+	return DriverManager.getConnection(dbUrl, username, password);
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
+return connection;
 	}
 
 	public String getPass(String user) {
