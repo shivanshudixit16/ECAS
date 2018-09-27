@@ -24,13 +24,32 @@ public class GetAdmit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String header,sem;
+		String header,seme,sem;
+		PrintWriter out = response.getWriter();
 		String roll=request.getParameter("roll_no");
 		try {
 			Connection con=DatabaseConnection.getCon();
-			PreparedStatement p=con.prepareStatement("select STDNAME,COURSE,BRANCH,BATCH,CLGNAME,STDEMAIL,STDCONTACT,FATHER_NAME,DOB,gender,semester from studentinfo where roll_no=?");
+			PreparedStatement p=con.prepareStatement("select SEMESTER,STATUS from admitreleased where roll_no=?");
 			p.setString(1, roll);
-			ResultSet rs= p.executeQuery();
+			ResultSet rs=p.executeQuery();
+			if(rs.next())
+			{
+				seme=rs.getString(1);
+				String status=rs.getString(2);
+				if(status.equals("low_attendance"))
+				{
+					out.write("Your admit card is not released b/s of low attendance");
+					return;
+				}
+			}
+			else
+			{
+				out.write("admit card not uploaded yet");
+				return;
+			}
+			p=con.prepareStatement("select STDNAME,COURSE,BRANCH,BATCH,CLGNAME,STDEMAIL,STDCONTACT,FATHER_NAME,DOB,gender from studentinfo where roll_no=?");
+			p.setString(1, roll);
+		    rs= p.executeQuery();
 			Student stud = new Student();
 			if(rs.next())
 			{
@@ -48,7 +67,7 @@ public class GetAdmit extends HttpServlet {
 				 stud.collegecode=new DatabaseConnection().getCollegeCode(stud.clgname);
 				 stud.centername=new DatabaseConnection().getCenter(stud.clgname);
 				 stud.centercode=new DatabaseConnection().getCollegeCode(stud.centername);
-				 stud.semester=rs.getInt(11);
+				 stud.semester=Integer.parseInt(seme);
 				 if(stud.semester% 2==0)
 				 {
 					 sem="Even";
@@ -91,7 +110,7 @@ public class GetAdmit extends HttpServlet {
 			}
 			else
 			{
-				PrintWriter out= response.getWriter();
+			    
 				out.write("roll_no doesn't exsists");
 			}
 		}

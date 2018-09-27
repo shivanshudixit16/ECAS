@@ -51,7 +51,7 @@ response.setHeader("Expires", "0");%>
   
 </div>
 <p><a href="admit_form.jsp">View Admitcard</a></p>
-<p><a href="formpage.html">View Marksheet</a></p>
+<p><a href="exam_result_form.jsp">View Marksheet</a></p>
 
 </body>
 </html>

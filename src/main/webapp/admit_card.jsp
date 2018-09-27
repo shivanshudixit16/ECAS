@@ -142,6 +142,11 @@
     </tr>
 </tbody>
 </table>
+<table style="width: 100%; padding-right: 10px; text-align: center; font-family: Verdana; font-size: 8pt; vertical-align: top;">
+						
+					<tbody><tr>
+					</tr>
+				</tbody></table>
 <table style="width: 100%;">
 	<tbody><tr><td><hr></td></tr>
 	<tr><td>

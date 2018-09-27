@@ -7,6 +7,9 @@ public class Subject {
 	public String time;
 	public String internal_mm;
 	public String external_mm;
+	public String internalmarks;
+	public String externalmarks;
+	public String exam_session;
 	public String getDate() {
 		return date;
 	}

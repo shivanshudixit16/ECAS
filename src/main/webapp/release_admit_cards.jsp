@@ -15,11 +15,12 @@ response.setHeader("Expires", "0");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<form action="genroll" method="post">
+<form action="releaseadmitcard" method="post">
 College<select name="college" required>
   <option value="" selected disabled hidden>Choose College</option>
   <%for(String co:college){%><option value="<%=co%>"><%=co%></option><%}%>
@@ -33,7 +34,7 @@ Branch<select name="branch" required>
   <option value="" selected disabled hidden>Choose Branch</option>
   <%for(String br:branches){%><option value="<%=br%>"><%=br%></option><%}%>
 </select><br>
-Batch<input type="text" name="batch" required>
+Batch<input type="number" name="batch" required>
 <input type="submit">
 </form>
 </body>

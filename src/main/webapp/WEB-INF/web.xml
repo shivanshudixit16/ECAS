@@ -48,6 +48,10 @@
   	<url-pattern>/teacher_home.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/enter_daily_attendance.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
   	<filter-name>StudentFilter</filter-name>
   	<url-pattern>/exam_form.jsp</url-pattern>
   </filter-mapping>
@@ -151,6 +155,42 @@
    	<description></description>
    	<servlet-class>SubmitExternalMarks</servlet-class>
    </servlet>
+   <servlet>
+   	<servlet-name>GetExamResult</servlet-name>
+   	<display-name>GetExamResult</display-name>
+   	<description></description>
+   	<servlet-class>GetExamResult</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>GetRollForAttendance</servlet-name>
+   	<display-name>GetRollForAttendance</display-name>
+   	<description></description>
+   	<servlet-class>GetRollForAttendance</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitDailyAttendamce</servlet-name>
+   	<display-name>SubmitDailyAttendamce</display-name>
+   	<description></description>
+   	<servlet-class>SubmitDailyAttendamce</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>FetchAttendanceDateWise</servlet-name>
+   	<display-name>FetchAttendanceDateWise</display-name>
+   	<description></description>
+   	<servlet-class>FetchAttendanceDateWise</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>ReleaseAdmitCard</servlet-name>
+   	<display-name>ReleaseAdmitCard</display-name>
+   	<description></description>
+   	<servlet-class>ReleaseAdmitCard</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>ReleaseResultCard</servlet-name>
+   	<display-name>ReleaseResultCard</display-name>
+   	<description></description>
+   	<servlet-class>ReleaseResultCard</servlet-class>
+   </servlet>
    <servlet-mapping>
     <servlet-name>teachersubmit</servlet-name>
     <url-pattern>/teacher_regsubmit</url-pattern>
@@ -214,5 +254,29 @@
    <servlet-mapping>
    	<servlet-name>SubmitExternalMarks</servlet-name>
    	<url-pattern>/submitexternalmarks</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>GetExamResult</servlet-name>
+   	<url-pattern>/getexamresult</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>GetRollForAttendance</servlet-name>
+   	<url-pattern>/getrollforattendance</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitDailyAttendamce</servlet-name>
+   	<url-pattern>/submitdailyattendamce</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>FetchAttendanceDateWise</servlet-name>
+   	<url-pattern>/fetchattendancedatewise</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>ReleaseAdmitCard</servlet-name>
+   	<url-pattern>/releaseadmitcard</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>ReleaseResultCard</servlet-name>
+   	<url-pattern>/releaseresultcard</url-pattern>
    </servlet-mapping>
 </web-app>

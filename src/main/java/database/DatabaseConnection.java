@@ -9,28 +9,42 @@ import java.util.ArrayList;
 import model.Subject;
 
 public class DatabaseConnection {
-	public static Connection getCon() 
+	public static Connection getCon()
 	{
-		Connection connection =null;
-		try {
+		Connection con;
+		/*
+		 * try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-String username = "isheuhnxufvvry";
-String password = "cba6e6a0256d969e4b2124437c7699e15c60b92e70e285af9d5ca77f9b96c11a";
-String dbUrl = "jdbc:postgresql://" + "ec2-174-129-18-98.compute-1.amazonaws.com:5432"
-		+ "/dav86kr2u6dq5b?sslmode=require";
-try {
-	return DriverManager.getConnection(dbUrl, username, password);
-} catch (SQLException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
+		String username = "isheuhnxufvvry";
+			String password = "cba6e6a0256d969e4b2124437c7699e15c60b92e70e285af9d5ca77f9b96c11a";
+			String dbUrl = "jdbc:postgresql://" + "ec2-174-129-18-98.compute-1.amazonaws.com:5432"
+					+ "/dav86kr2u6dq5b?sslmode=require";
+			try {
+				return DriverManager.getConnection(dbUrl, username, password);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 * */
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 
-return connection;
+		
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shiv","1234");
+			return con;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public String getPass(String user) {
@@ -283,11 +297,111 @@ public String getCollegeNameOfTeacher(String tusername) {
 		return null;
 	}
 	return null;
-	
-
 }
-
-
+public String[] getTotalClassesAttendedByARollAndTotalClass(String roll) //returns null if roll no does not exsists
+{
+	Connection con=DatabaseConnection.getCon();
+	int total = 0,attended=0;
+	PreparedStatement p;
+	try {
+		
+		p=con.prepareStatement("select COURSE,BRANCH,BATCH,CLGNAME,semester from studentinfo where roll_no=?");
+		p.setString(1, roll);
+	     ResultSet rs=p.executeQuery();
+	     if(rs.next())
+	     {
+	    	 p=con.prepareStatement("select TOTALLECTURES from TOTALLECTURES where course=? and branch=? and batch=? and clgname=? and semester=?");
+	 		 p.setString(1, rs.getString(1));
+	 		 p.setString(2, rs.getString(2));
+	 		 p.setString(3, rs.getString(3));
+	 		 p.setString(4, rs.getString(4));
+	 		 p.setString(5, rs.getString(5));
+	    	 rs=p.executeQuery();
+	 	     while(rs.next())
+	 	     {
+	 	    	 total+=Integer.parseInt(rs.getString(1));
+	 	     }
+	 	     p=con.prepareStatement("select LECTURESattended from LECTURESattended where roll_no=?");
+	 		 p.setString(1,roll);
+	    	 rs=p.executeQuery();
+	 	     while(rs.next())
+	 	     {
+	 	    	 attended+=Integer.parseInt(rs.getString(1));
+	 	     }
+	 	     String s[]= {""+total,""+attended};
+	 	     return s;
+	     }
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	return null;
+}
+public String[] getTotalClassesAttendedByARollAndTotalClassAtADate(String roll,String date) //returns null if roll no does not exsists
+{
+	Connection con=DatabaseConnection.getCon();
+	int total = 0,attended=0;
+	PreparedStatement p;
+	try {
+		
+		p=con.prepareStatement("select COURSE,BRANCH,BATCH,CLGNAME,semester from studentinfo where roll_no=?");
+		p.setString(1, roll);
+	     ResultSet rs=p.executeQuery();
+	     if(rs.next())
+	     {
+	    	 p=con.prepareStatement("select TOTALLECTURES from TOTALLECTURES where course=? and branch=? and batch=? and clgname=? and semester=? and AT_DATE=?");
+	 		 p.setString(1, rs.getString(1));
+	 		 p.setString(2, rs.getString(2));
+	 		 p.setString(3, rs.getString(3));
+	 		 p.setString(4, rs.getString(4));
+	 		 p.setString(5, rs.getString(5));
+	 		 p.setString(6,date);
+	    	 rs=p.executeQuery();
+	 	     while(rs.next())
+	 	     {
+	 	    	 total+=Integer.parseInt(rs.getString(1));
+	 	     }
+	 	     p=con.prepareStatement("select LECTURESattended from LECTURESattended where roll_no=? and AT_DATE=?");
+	 		 p.setString(1,roll);
+	 		 p.setString(2,date);
+	    	 rs=p.executeQuery();
+	 	     while(rs.next())
+	 	     {
+	 	    	 attended+=Integer.parseInt(rs.getString(1));
+	 	     }
+	 	     String s[]= {""+total,""+attended};
+	 	     return s;
+	     }
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	return null;
+}
+public String getRoll(String email) {
+	Connection con=DatabaseConnection.getCon();
+	PreparedStatement p;
+	try {
+		//System.out.println(tusername);
+		p=con.prepareStatement("select roll_no from studentinfo where stdemail=?");
+		p.setString(1, email);
+	     ResultSet rs=p.executeQuery();
+	    
+	     if(rs.next())
+	     {
+	    	 
+	    	 return rs.getString(1);
+	    	 
+	     }
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	return null;
+}
 
 
 }

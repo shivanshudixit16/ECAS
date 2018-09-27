@@ -15,7 +15,8 @@
 	</div>
 	<br>
 	<h3>
-		<a href="examform">Fill Exam form</a>
+		<a href="examform">Fill Exam form</a><br>
+		<a href="checkattendance.jsp">Check Attendance</a>
 	</h3>
 	<br>
 </body>
