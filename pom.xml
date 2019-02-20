@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>miniproject</groupId>
-  <artifactId>miniproject2</artifactId>
+  <groupId>ECAS</groupId>
+  <artifactId>ECAS</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>miniproject2 Maven Webapp</name>
@@ -29,15 +29,22 @@
 
     
     <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
-<dependency>
-    <groupId>oracle</groupId>
-    <artifactId>ojdbc6</artifactId>
-    <version>11.2.0.3</version>
+<!-- <dependency> -->
+<!--     <groupId>oracle</groupId> -->
+<!--     <artifactId>ojdbc6</artifactId> -->
+<!--     <version>11.2.0.3</version> -->
     
+<!-- </dependency> -->
+<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+<dependency>
+    <groupId>postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>8.2-511.jdbc3</version>
 </dependency>
+
     
   </dependencies>
   <build>
-    <finalName>miniproject2</finalName>
+    <finalName>ECAS</finalName>
   </build>
 </project>
