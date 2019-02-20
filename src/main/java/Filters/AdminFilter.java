@@ -34,6 +34,7 @@ public class AdminFilter implements Filter {
 			if(user==null)
 			{ 
 			  res.sendRedirect("index.jsp");
+			  return;
 			 
 			}
 			else {
@@ -42,12 +43,14 @@ public class AdminFilter implements Filter {
 			{
 				session.setAttribute("ausername", user);
 				chain.doFilter(req, res);
+				return;
 				
 			}
 			else
 			{
 				context.setAttribute("afmsg","Wrong Credentials");
 				res.sendRedirect("admin_login.jsp");
+				return;
 			
 				
 			}
@@ -57,6 +60,7 @@ public class AdminFilter implements Filter {
 		else
 		{
 			chain.doFilter(req, res);
+			 return;
 		}
 	}
 

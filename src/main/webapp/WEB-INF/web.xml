@@ -39,6 +39,59 @@
   	<filter-name>AdminFilter</filter-name>
   	<url-pattern>/assign_exam_center.jsp</url-pattern>
   </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/allocate_answer_sheets_to_students.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/assign_answer_sheets_choose_teachers.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/assign_exam_dates.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/assign_subjects_to_session.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/choose_copy_codes_for_teacher.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/confirm_start_semester.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/confirm_start_semssion.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/confirm_start_semssion.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/enter_external_marks.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/external_marks_choose_roll.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/release_admit_cards.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/release_result_cards.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>/upload_answer_sheets.jsp</url-pattern>
+  </filter-mapping>
+  
   <filter-mapping>
   	<filter-name>TeacherFilter</filter-name>
   	<url-pattern>/student_reg.jsp</url-pattern>
@@ -52,12 +105,56 @@
   	<url-pattern>/enter_daily_attendance.jsp</url-pattern>
   </filter-mapping>
   <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/allocateteacherschooseclass.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/check_copies.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/choose_copies.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/enter_daily_attendance_home.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/enter_daily_attendance.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/enter_subjects_teacher.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/enter_internal_marks.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/internal_marks_choose_roll.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>TeacherFilter</filter-name>
+  	<url-pattern>/student_reg.jsp</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  
+  <filter-mapping>
   	<filter-name>StudentFilter</filter-name>
   	<url-pattern>/exam_form.jsp</url-pattern>
   </filter-mapping>
     <filter-mapping>
   	<filter-name>StudentFilter</filter-name>
   	<url-pattern>/student_home.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+  	<filter-name>StudentFilter</filter-name>
+  	<url-pattern>/checkattendance.jsp</url-pattern>
   </filter-mapping>
     <filter-mapping>
     	<filter-name>StudentFilter</filter-name>
@@ -191,6 +288,60 @@
    	<description></description>
    	<servlet-class>ReleaseResultCard</servlet-class>
    </servlet>
+   <servlet>
+   	<servlet-name>GetSubjectsTeacher</servlet-name>
+   	<display-name>GetSubjectsTeacher</display-name>
+   	<description></description>
+   	<servlet-class>GetSubjectsTeacher</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitTeachersSubjects</servlet-name>
+   	<display-name>SubmitTeachersSubjects</display-name>
+   	<description></description>
+   	<servlet-class>SubmitTeachersSubjects</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>FetchSubjectsForAnswersheet</servlet-name>
+   	<display-name>FetchSubjectsForAnswersheet</display-name>
+   	<description></description>
+   	<servlet-class>FetchSubjectsForAnswersheet</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitAssignedAnswersheet</servlet-name>
+   	<display-name>SubmitAssignedAnswersheet</display-name>
+   	<description></description>
+   	<servlet-class>SubmitAssignedAnswersheet</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitCopyImages</servlet-name>
+   	<display-name>SubmitCopyImages</display-name>
+   	<description></description>
+   	<servlet-class>SubmitCopyImages</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>FetchCopyNumbers</servlet-name>
+   	<display-name>FetchCopyNumbers</display-name>
+   	<description></description>
+   	<servlet-class>FetchCopyNumbers</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitCopycodesForTeachers</servlet-name>
+   	<display-name>SubmitCopycodesForTeachers</display-name>
+   	<description></description>
+   	<servlet-class>SubmitCopycodesForTeachers</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>CopyImagesSend</servlet-name>
+   	<display-name>CopyImagesSend</display-name>
+   	<description></description>
+   	<servlet-class>imagehandler.CopyImagesSend</servlet-class>
+   </servlet>
+   <servlet>
+   	<servlet-name>SubmitCheckedCopies</servlet-name>
+   	<display-name>SubmitCheckedCopies</display-name>
+   	<description></description>
+   	<servlet-class>SubmitCheckedCopies</servlet-class>
+   </servlet>
    <servlet-mapping>
     <servlet-name>teachersubmit</servlet-name>
     <url-pattern>/teacher_regsubmit</url-pattern>
@@ -278,5 +429,41 @@
    <servlet-mapping>
    	<servlet-name>ReleaseResultCard</servlet-name>
    	<url-pattern>/releaseresultcard</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>GetSubjectsTeacher</servlet-name>
+   	<url-pattern>/getsubjectsteacher</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitTeachersSubjects</servlet-name>
+   	<url-pattern>/submitteacherssubjects</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>FetchSubjectsForAnswersheet</servlet-name>
+   	<url-pattern>/fetchsubjectsforanswersheet</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitAssignedAnswersheet</servlet-name>
+   	<url-pattern>/submitassignedanswersheet</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitCopyImages</servlet-name>
+   	<url-pattern>/submitcopyimages</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>FetchCopyNumbers</servlet-name>
+   	<url-pattern>/fetchcopynumbers</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitCopycodesForTeachers</servlet-name>
+   	<url-pattern>/submitcopycodesforteachers</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>CopyImagesSend</servlet-name>
+   	<url-pattern>/copyimages</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SubmitCheckedCopies</servlet-name>
+   	<url-pattern>/submitcheckedcopies</url-pattern>
    </servlet-mapping>
 </web-app>

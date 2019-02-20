@@ -4,6 +4,7 @@
          <%
  	ArrayList<String> branches= new DatabaseConnection().getAllBranches();
  	ArrayList<String> courses= new DatabaseConnection().getAllCourses();
+ 	ArrayList<String> subjects= new DatabaseConnection().getTeacherSubjects((String)session.getAttribute("tusername"));
  %>
     
  >
@@ -32,6 +33,9 @@ Branch<select name="branch" required>
 </select><br>
 Batch<input type="text" name="batch" required><br>
 Semester<input type="text" name="semester" required>
+Subject<select name="subcode"  required>
+<%for(String s:subjects){%><option value="<%=s%>"><%=s%></option><%}%>
+</select>
 <input type="submit" ><br>
 <br>
 </form>

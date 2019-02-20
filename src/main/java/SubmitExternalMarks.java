@@ -13,8 +13,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.DatabaseConnection;
+import model.Subject;
 
 /**
  * Servlet implementation class SubmitExternalMarks
@@ -23,24 +25,22 @@ public class SubmitExternalMarks extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
 		PrintWriter out=response.getWriter();
-		List<String> e = new ArrayList<String>(request.getParameterMap().keySet());
+		ArrayList<Subject> subjects=(ArrayList<Subject>) session.getAttribute("subjects");
 		try {
-		for(String subcode : e)
+		for(Subject subject : subjects)
 		{
-			
-				
-				if(subcode.equals("semester")||subcode.equals("roll_no"))
-					continue;
+		
 				Connection con =DatabaseConnection.getCon();
 				PreparedStatement ps=con.prepareStatement("update studentsub set ExternalMARKS=? where ROLL_NO=? and SUB_CODE=? and SESSION_START=? and SEMESTER=?");
-				ps.setString(1,request.getParameter(subcode));
+				ps.setString(1,request.getParameter(subject.subcode));
 				ps.setString(2,request.getParameter("roll_no"));
-				ps.setString(3,subcode);
+				ps.setString(3,subject.subcode);
 				ps.setString(4,""+new DatabaseConnection().getCurrentSession());
 				ps.setString(5, request.getParameter("semester"));
 				ps.executeQuery();
-			    out.write("succes fuly added marks of "+subcode+"\n");
+			    out.write("succes fuly added marks of "+subject.subcode+"\n");
 			} 
 
 		}

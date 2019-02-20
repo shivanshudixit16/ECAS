@@ -298,12 +298,13 @@ ul.faq li {
 							<select name="subjects" id="demoSel" size="4" multiple="" >
 								<%for(Subject sub:subjects){%><option value="<%=sub.subcode%>"><%=sub.subname%></option><%}%>
 							</select> 
-							<input type="submit" value="Submit">
+							
 							<textarea name="display" id="display"
 								placeholder="view select list value(s) onchange" cols="10"
 								rows="4" readonly=""></textarea>
 						</p>
 					</fieldset>
+					<input type="submit" value="Submit">
 				</form>
 				<script type="text/javascript">
 					(function() {

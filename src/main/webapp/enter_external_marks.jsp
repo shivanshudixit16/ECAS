@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1" import="model.*,java.util.*"%>
     <%
     Student stud=(Student)request.getAttribute("student");
-    ArrayList<Subject> subjects=(ArrayList<Subject>)request.getAttribute("subjects");
+    ArrayList<Subject> subjects=(ArrayList<Subject>)session.getAttribute("subjects");
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

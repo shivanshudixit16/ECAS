@@ -50,13 +50,14 @@ public class StudentFilter implements Filter {
 			{
 				session.setAttribute("susername", user);
 				chain.doFilter(req, res);
+				 return;
 				
 			}
 			else
 			{
 				context.setAttribute("sfmsg","Wrong Credentials");
 				res.sendRedirect("student_login.jsp");
-			
+				 return;
 				
 			}
 			
@@ -65,6 +66,7 @@ public class StudentFilter implements Filter {
 		else
 		{
 			chain.doFilter(req, res);
+			 return;
 		}
 	}
 

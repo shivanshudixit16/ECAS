@@ -74,7 +74,7 @@ public class InternalMarksFetchSubjects extends HttpServlet {
 			    	 subjects.add(sub);
 			     }
 			     request.setAttribute("student", stud);
-			     request.setAttribute("subjects",subjects);
+			     session.setAttribute("subjects",subjects);
 				 RequestDispatcher rd=request.getRequestDispatcher("enter_internal_marks.jsp");
 				 rd.forward(request, response);
 				 

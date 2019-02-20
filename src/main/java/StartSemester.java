@@ -27,12 +27,13 @@ public class StartSemester extends HttpServlet {
 			Connection con=DatabaseConnection.getCon();
 			PreparedStatement ps= con.prepareStatement("update studentinfo set semester=semester+1 where roll_no is not null");
 			ps.executeQuery();
-		    out.write("sucess");
+		    request.setAttribute("semmsg", "Success");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.write("failure");
+			request.setAttribute("semmsg", "Failure");
 		}
+		request.getRequestDispatcher("confirm_start_session.jsp").forward(request, response);
 	}
 
 }

@@ -33,7 +33,7 @@ response.setHeader("Expires", "0");%>
  		 Batch<input type="text" name="batch" value="<%=new DatabaseConnection().getCurrentSession() %>" readonly><br><br>
          Student Email:<br> <input type="email" name="stdemail" required><br><br>
          Student ContactNo:<br> <input type="number" name="stdcontact" required><br><br>
-         Upload Your Photo  <input type="file" name="photo" accept="image/*" > <br>
+         Upload Your Photo  <input type="file" name="photo" accept="image/*"  required> <br>
          <input type="submit" value="Submit">
       </form>
    </body>

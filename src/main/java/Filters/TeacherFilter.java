@@ -51,12 +51,14 @@ public class TeacherFilter implements Filter {
 			{
 				session.setAttribute("tusername", user);
 				chain.doFilter(req, res);
+				 return;
 				
 			}
 			else
 			{
 				context.setAttribute("tfmsg","Wrong Password");
 				res.sendRedirect("teacher_login.jsp");
+				 return;
 				
 			}
 			
@@ -65,6 +67,7 @@ public class TeacherFilter implements Filter {
 		else
 		{
 			chain.doFilter(req, res);
+			 return;
 		}
 	}
 

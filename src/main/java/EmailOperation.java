@@ -19,7 +19,7 @@ public  void sendMail(String mail) throws MessagingException
 			"\r\n" + 
 			"Thank you\r\n" + 
 			"";
-	EmailCompose ec = new EmailCompose("examcellinformation@gmail.com","examcell1234");
+	EmailCompose ec = new EmailCompose("examcell@protonmail.com","examcell");
 	String subject="login credentials for exam cell automation system";
 	ec.setSubject(subject);
 	ec.addRecievers(mail);

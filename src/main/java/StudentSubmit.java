@@ -62,11 +62,12 @@ public class StudentSubmit extends HttpServlet {
 			{
 				st= filePart.getInputStream();
 			}
-			ps.setBlob(10, st);
+			ps.setBinaryStream(10, st);
+			//ps.setBlob(10, st);
 			ps.setString(11, null);
 			ps.setString(12, gender);
 			ps.setInt(13,1);
-			ps.execute();
+			ps.executeUpdate();
 			
 			out.write("Student Registered SuccessFully");
 		} 

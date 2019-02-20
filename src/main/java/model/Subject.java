@@ -10,6 +10,7 @@ public class Subject {
 	public String internalmarks;
 	public String externalmarks;
 	public String exam_session;
+	public String type;
 	public String getDate() {
 		return date;
 	}

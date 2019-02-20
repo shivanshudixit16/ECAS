@@ -1,6 +1,12 @@
 <%@page import="database.DatabaseConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="model.*,java.util.*"  import="java.net.URI"%>
+    <%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0");
+%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -366,11 +372,19 @@ for(int i=1;i<=stud.semester;i++)//stud.semester or8 for all semesters
 			 {
 				 sem="Odd";
 			 } 
-            int noofsub=0,tot_ob=0;
+            int noofsub=0,tot_ob=0,tsub=0,psub=0;
             for(Subject sub:subjects)
 			{
             	noofsub++;
 				tot_ob+=Integer.parseInt(sub.internalmarks)+Integer.parseInt(sub.externalmarks);
+				if(sub.type.equals("theory"))
+				{
+					tsub++;
+				}
+				else
+				{
+					psub++;
+				}
 			
 			}
 			 %>
@@ -390,7 +404,7 @@ for(int i=1;i<=stud.semester;i++)//stud.semester or8 for all semesters
                 <span id="" style="font-weight:bold;">Theory Subjects</span></td>
             <td><b>:</b></td>
             <td>
-                <span id="">5</span>
+                <span id=""><%=tsub %></span>
             </td>
         </tr>
 
@@ -399,7 +413,7 @@ for(int i=1;i<=stud.semester;i++)//stud.semester or8 for all semesters
                 <span id="" style="font-weight:bold;">Practical Subjects</span></td>
             <td><b>:</b></td>
             <td>
-                <span id="">4</span>
+                <span id=""><%=psub %></span>
             </td>
 
             <td>
@@ -453,8 +467,8 @@ for(int i=1;i<=stud.semester;i++)//stud.semester or8 for all semesters
                         </td><td>
                             <span id="" style="white-space: pre-wrap;"><%=sub.subname%></span>
                         </td><td>
-                            <span id="" style="white-space: pre-wrap;">Theory</span>
-                        </td><td><%=sub.internalmarks%></td><td><%=sub.externalmarks%></td><td>--</td><td>B+</td>
+                            <span id="" style="white-space: pre-wrap;"><%=sub.type %></span>
+                        </td><td><%=sub.internalmarks%></td><td><%=sub.externalmarks%></td><td>--</td><td>--</td>
 						</tr>
 						<%}%>
 					
@@ -495,8 +509,3 @@ var acc = document.getElementById("btn<%=i%>");
 
 </body>
 </html>
-<%
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-	response.setHeader("Expires", "0");
-%>

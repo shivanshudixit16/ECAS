@@ -12,17 +12,16 @@
 <form action="submitdailyattendamce">
 <h5>Date<input type="date" recqired="" name="date"></h5>
 <br>
-Total Number Of Lectures Today <input type="text"  name="nol" recquired>
 <table>
 <tr>
 <th>Roll. No.</th>
-<th>No. Of Lectures Attended today</th>
+<th>Present/Absent</th>
 </tr>
 <%for(String r:rolls)
 {%>
 <tr>
-<td><%=r %></td>
-<td><input type="text" name="<%=r %>" recqired></td>
+<td><%=r%></td>
+<td><input type="checkbox" name="present" value="<%=r %>" ></td>
 </tr>
 <%} %>
 

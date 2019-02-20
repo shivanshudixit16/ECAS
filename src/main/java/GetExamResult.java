@@ -91,6 +91,7 @@ public class GetExamResult extends HttpServlet {
 				    	 sub.internalmarks=rs.getString(2);
 				    	 sub.externalmarks=rs.getString(3);
 				    	 sub.exam_session=rs.getString(4);
+				    	 sub.type=new DatabaseConnection().getSubjectType(sub.subcode);
 				    	 p=con.prepareStatement("select INTERNAL_MM,external_mm from subjectsassigned where SUB_CODE=? and COURSE=? and BRANCH=? and SEMESTER=? and CUR_SESSION=?");
 				    	 p.setString(1,sub.subcode);
 						 p.setString(2,stud.course);

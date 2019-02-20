@@ -26,6 +26,7 @@ public class ExternalMarksFetchSubjects extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession();
 		String roll=request.getParameter("roll_no");
 		try {
 			Connection con=DatabaseConnection.getCon();
@@ -53,6 +54,10 @@ public class ExternalMarksFetchSubjects extends HttpServlet {
 			     {
 			    	 Subject sub=new Subject();
 			    	 sub.subcode=rs.getString(1);
+			    	 if(new DatabaseConnection().getSubjectType(sub.subcode).equals("theory"))
+			    	 {
+			    		 continue;
+			    	 }
 			    	 sub.subname=new DatabaseConnection().getSubjectName(sub.subcode);
 			    	 p=con.prepareStatement("select External_MM from subjectsassigned where SUB_CODE=? and COURSE=? and BRANCH=? and SEMESTER=? and CUR_SESSION=?");
 			    	 p.setString(1,sub.subcode);
@@ -68,7 +73,7 @@ public class ExternalMarksFetchSubjects extends HttpServlet {
 			    	 subjects.add(sub);
 			     }
 			     request.setAttribute("student", stud);
-			     request.setAttribute("subjects",subjects);
+			     session.setAttribute("subjects",subjects);
 				 RequestDispatcher rd=request.getRequestDispatcher("enter_external_marks.jsp");
 				 rd.forward(request, response);
 				 

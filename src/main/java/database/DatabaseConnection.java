@@ -11,9 +11,9 @@ import model.Subject;
 public class DatabaseConnection {
 	public static Connection getCon()
 	{
-		Connection con;
-		
-	try {
+		Connection con=null;
+		/*
+		 * try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
@@ -30,21 +30,18 @@ public class DatabaseConnection {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	return null;
-		/*try {
+		 * */
+		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shiv","1234");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shiv","1234");//1234
 			return con;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;*/
+		return con;
 	}
 
 	public String getPass(String user) {
@@ -319,14 +316,14 @@ public String[] getTotalClassesAttendedByARollAndTotalClass(String roll) //retur
 	    	 rs=p.executeQuery();
 	 	     while(rs.next())
 	 	     {
-	 	    	 total+=Integer.parseInt(rs.getString(1));
+	 	    	 total+=rs.getInt(1);
 	 	     }
 	 	     p=con.prepareStatement("select LECTURESattended from LECTURESattended where roll_no=?");
 	 		 p.setString(1,roll);
 	    	 rs=p.executeQuery();
 	 	     while(rs.next())
 	 	     {
-	 	    	 attended+=Integer.parseInt(rs.getString(1));
+	 	    	 attended+=rs.getInt(1);
 	 	     }
 	 	     String s[]= {""+total,""+attended};
 	 	     return s;
@@ -360,7 +357,7 @@ public String[] getTotalClassesAttendedByARollAndTotalClassAtADate(String roll,S
 	    	 rs=p.executeQuery();
 	 	     while(rs.next())
 	 	     {
-	 	    	 total+=Integer.parseInt(rs.getString(1));
+	 	    	 total+=rs.getInt(1);
 	 	     }
 	 	     p=con.prepareStatement("select LECTURESattended from LECTURESattended where roll_no=? and AT_DATE=?");
 	 		 p.setString(1,roll);
@@ -368,7 +365,7 @@ public String[] getTotalClassesAttendedByARollAndTotalClassAtADate(String roll,S
 	    	 rs=p.executeQuery();
 	 	     while(rs.next())
 	 	     {
-	 	    	 attended+=Integer.parseInt(rs.getString(1));
+	 	    	 attended+=rs.getInt(1);
 	 	     }
 	 	     String s[]= {""+total,""+attended};
 	 	     return s;
@@ -403,5 +400,76 @@ public String getRoll(String email) {
 	return null;
 }
 
+public ArrayList<String> getCopies(String email)
+{
+	Connection con=DatabaseConnection.getCon();
+	PreparedStatement p;
+	try {
+		p=con.prepareStatement("select COPY_NO from TEACHERCOPIES where  EMAIL=?");
+		p.setString(1, email);
+	     ResultSet rs=p.executeQuery();
+	     ArrayList<String> copies = new ArrayList<String>();
+	     while(rs.next())
+	     {
+	    	 
+	    	 copies.add(rs.getString(1));
+	    	 
+	     }
+	     return copies;
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+}
 
+public String getSubjectType(String code)
+{
+	Connection con=DatabaseConnection.getCon();
+	PreparedStatement p;
+	try {
+		p=con.prepareStatement("select type from subjects where  sub_code=?");
+		p.setString(1, code);
+	     ResultSet rs=p.executeQuery();
+	     if(rs.next())
+	     {
+	    	 
+	    	 return rs.getString(1);
+	    	 
+	     }
+	     
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	return null;
+}
+
+public ArrayList<String> getTeacherSubjects(String temail)
+{
+	Connection con=DatabaseConnection.getCon();
+	PreparedStatement ps;
+	ResultSet rs;
+	try {
+	
+		 ps=con.prepareStatement("select subcode from teachersub where temail=?");
+		 ps.setString(1, temail);
+		 rs=ps.executeQuery();
+		 ArrayList<String> subjects = new ArrayList<String>();
+	     while(rs.next())
+	     {
+	    	 
+	    	 subjects.add(rs.getString(1));
+	    	 
+	     }
+	     return subjects;
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+	
+
+}
 }

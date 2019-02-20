@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="<%=URI.create(request.getRequestURL().toString()).resolve(request.getContextPath())%>/images" height="100" width="60">
+<img src="<%=URI.create(request.getRequestURL().toString()).resolve(request.getContextPath())%>/copyimages?cc=789&pn=p1" height="100" width="60">
 </body>
 </html>
