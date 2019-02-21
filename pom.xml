@@ -45,7 +45,7 @@
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
-        <version>1.0.0</version>   //Add the version.
+        <version>1.0.0</version>   
 </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
