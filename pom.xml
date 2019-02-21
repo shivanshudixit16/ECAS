@@ -42,7 +42,18 @@
     <version>8.2-511.jdbc3</version>
 </dependency>
     
-    
+    <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${default.javax.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${default.javax.servlet.jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
   </dependencies>
   <build>
     <finalName>ecas</finalName>
