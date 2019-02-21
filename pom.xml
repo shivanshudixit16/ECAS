@@ -43,16 +43,15 @@
 </dependency>
     
     <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${default.javax.servlet.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>1.0.0</version>   //Add the version.
+</dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>${default.javax.servlet.jsp.version}</version>
-            <scope>provided</scope>
+            <version>1.0.0</version>
+            
         </dependency>
   </dependencies>
   <build>
