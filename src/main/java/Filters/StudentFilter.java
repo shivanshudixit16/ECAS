@@ -24,6 +24,7 @@ public class StudentFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
 		HttpServletResponse res=(HttpServletResponse)response;
+		//String url = ((HttpServletRequest)request).getRequestURL().toString();
 		HttpSession session=req.getSession();
 		//System.out.println("\n\nin  \n");
 		ServletContext context=config.getServletContext(); 
@@ -32,7 +33,10 @@ public class StudentFilter implements Filter {
 			String user=request.getParameter("susername");
 			if(user==null)
 			{ 
-			  res.sendRedirect("index.jsp");
+				
+				//context.setAttribute("link",url);
+			  res.sendRedirect("student_login.jsp");
+			  
 			  return;
 			 
 			}
@@ -42,6 +46,7 @@ public class StudentFilter implements Filter {
 			String dpass=dc.getStudentPass(user);
 			if(dpass==null)
 			{
+				//context.setAttribute("link",url);
 				context.setAttribute("sfmsg","User name Does not Exsists");
 				res.sendRedirect("student_login.jsp");
 				return;
@@ -55,6 +60,7 @@ public class StudentFilter implements Filter {
 			}
 			else
 			{
+				//context.setAttribute("link",url);
 				context.setAttribute("sfmsg","Wrong Credentials");
 				res.sendRedirect("student_login.jsp");
 				 return;
@@ -65,6 +71,7 @@ public class StudentFilter implements Filter {
 		}
 		else
 		{
+			System.out.print("in");
 			chain.doFilter(req, res);
 			 return;
 		}

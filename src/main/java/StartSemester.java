@@ -33,7 +33,7 @@ public class StartSemester extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("semmsg", "Failure");
 		}
-		request.getRequestDispatcher("confirm_start_session.jsp").forward(request, response);
+		request.getRequestDispatcher("confirm_start_semester.jsp").forward(request, response);
 	}
 
 }

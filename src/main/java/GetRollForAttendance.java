@@ -23,13 +23,17 @@ public class GetRollForAttendance extends HttpServlet {
 		String batch=request.getParameter("batch");
 		String branch=request.getParameter("branch");
 		String course=request.getParameter("course");
+		String sem =request.getParameter("semester");
+		String sub =request.getParameter("subcode");
 		Connection con = DatabaseConnection.getCon();
 		try {
-			PreparedStatement ps= con.prepareStatement("select roll_no from studentinfo where COURSE=? and BRANCH=? and BATCH=? and CLGNAME=? order by roll_no");
+			PreparedStatement ps= con.prepareStatement("select studentinfo.roll_no from studentinfo,studentsub where studentinfo.COURSE=? and BRANCH=? and BATCH=? and CLGNAME=? and studentinfo.semester=? and sub_code=? and studentsub.roll_no=studentinfo.roll_no order by studentsub.roll_no");
 			ps.setString(1,course);
 			ps.setString(2,branch);
 			ps.setString(3,batch);
 			ps.setString(4,clgname);
+			ps.setString(5,sem);
+			ps.setString(6,sub);
 			ResultSet rs=ps.executeQuery();
 			ArrayList<String> rolls = new ArrayList<String>();
 			while(rs.next())

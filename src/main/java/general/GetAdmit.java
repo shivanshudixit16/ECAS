@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.DatabaseConnection;
 import model.Student;
@@ -25,8 +26,23 @@ public class GetAdmit extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String header,seme,sem;
+		HttpSession sessio=request.getSession();
 		PrintWriter out = response.getWriter();
-		String roll=request.getParameter("roll_no");
+		String roll;//=request.getParameter("roll_no");
+		if(sessio.getAttribute("susername")!=null)
+		{
+			roll=new DatabaseConnection().getRoll((String)sessio.getAttribute("susername"));
+		}
+		else if(request.getParameter("roll_no") !=null)
+		{
+			roll =request.getParameter("roll_no");
+		}
+		else
+		{
+			response.sendRedirect("admit_choose_roll.jsp");
+			return;
+		}
+		
 		try {
 			Connection con=DatabaseConnection.getCon();
 			PreparedStatement p=con.prepareStatement("select SEMESTER,STATUS from admitreleased where roll_no=?");

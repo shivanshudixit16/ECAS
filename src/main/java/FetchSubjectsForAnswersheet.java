@@ -32,7 +32,13 @@ public class FetchSubjectsForAnswersheet extends HttpServlet {
 		 ResultSet rs=ps.executeQuery();
 		 while(rs.next())
 		 {
+			 
 			 String subcode=rs.getString(1);
+			 if(subcode==null)
+			 {
+				 out.println("No subjects assigned");
+				 return;
+			 }
 			 if(new DatabaseConnection().getSubjectType(subcode).equals("theory")) 
 			 {
 				 subjects.add(subcode);
