@@ -12,7 +12,8 @@ public class DatabaseConnection {
 	public static Connection getCon()
 	{
 		Connection con=null;
-		 try {
+		/*
+		 * try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
@@ -29,8 +30,8 @@ public class DatabaseConnection {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-		/* try {
+		 * */
+		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		
@@ -39,7 +40,7 @@ public class DatabaseConnection {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} */
+		}
 		return con;
 	}
 
