@@ -326,7 +326,7 @@ response.setHeader("Expires", "0");%>
 				<div class="col-lg-2 col-md-2 col-sm-2 wthree-services-grid">
 					<div class="wthree-services-icon">
 					<div class="slideanim">
-						<a href="exam_form.jsp"> <img src="./images/ExamForm.png" style="width:150px;" ></a>
+						<a href="examform"> <img src="./images/ExamForm.png" style="width:150px;" ></a>
 					</div>
 					</div>
 					<div class="wthree-services-info">
@@ -336,7 +336,7 @@ response.setHeader("Expires", "0");%>
 				<div class="col-lg-2 col-md-2 col-sm-2 wthree-services-grid">
 					<div class="wthree-services-icon">
 					<div class="slideanim">
-					<a href="admit_card.jsp"><img src="./images/Admit-Card.png" style="width:150px;" ></a>
+					<a href="getadmit"><img src="./images/Admit-Card.png" style="width:150px;" ></a>
 					 </div>
 					</div>
 					<div class="wthree-services-info">
@@ -347,7 +347,7 @@ response.setHeader("Expires", "0");%>
 				<div class="col-lg-2 col-md-2 col-sm-2 wthree-services-grid">
 					<div class="wthree-services-icon">
 					<div class="slideanim">
-					<a href="exam_result.jsp"><img src="./images/student.jpg" style="width:150px;" ></a>
+					<a href="getexamresult"><img src="./images/student.jpg" style="width:150px;" ></a>
 					 </div>
 					</div>
 					<div class="wthree-services-info">
@@ -358,7 +358,7 @@ response.setHeader("Expires", "0");%>
 				<div class="col-lg-2 col-md-2 col-sm-2 wthree-services-grid">
 					<div class="wthree-services-icon">
 					<div class="slideanim">
-						<a href="check_attendance.jsp">	 <img src="./images/attendance.jpg" style="width:150px;" >
+						<a href="checkattendance.jsp">	 <img src="./images/16.jpg" style="width:150px;" >
 					</div>	 
 					</div>
 					<div class="wthree-services-info">
@@ -442,7 +442,7 @@ response.setHeader("Expires", "0");%>
                         
                                 <div class="col-md-3 col-sm-3 col-xs-6 team-grids">
                                         <div class="team-agile-img">
-                                                <a href="#"><img src="images/sonali.jpg" alt="" class="img-responsive"></a>
+                                                <a href="#"><img src="images/17.jpg" alt="" class="img-responsive"></a>
                                                 <div class="view-caption">
                                                 <p>Sonali Singh</p>
 												<p>B.Tech</p>

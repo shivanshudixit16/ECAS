@@ -57,12 +57,12 @@ response.setHeader("Expires", "0");
 </div>
 
 	<div id="navbar">
-		<a class="active" href="index.html">Home</a>
+		<a class="active" href="index.jsp">Home</a>
 		<a href="teacher_login.jsp">Teacher Login</a>
 		<a href="index.jsp#services">Student Corner</a>
 		<a href="index.jsp">Circulars</a>
 		<a href="index.jsp#gallery">Gallery</a>
-		<a href="" class="fa">&#xf08b;Logout</a>
+		<a href="logout.jsp" class="fa">&#xf08b;Logout</a>
    </div>
 
 	<div class="content-agileits">

@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +22,7 @@ public class FetchCopyNumbers extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+			PrintWriter out=response.getWriter();
 			String email=request.getParameter("email");
 			try 
 			{
@@ -32,6 +34,11 @@ public class FetchCopyNumbers extends HttpServlet {
 				while(rs.next())
 				{
 					String subcode=rs.getString(1);
+					if(subcode==null)
+					{
+						out.print("Error");
+						return;
+					}
 					ps=con.prepareStatement("select COPY_NO from SHEETSASSIGNED where SUBCODE=? and copy_no not in(select copy_no from teachercopies)");
 					ps.setString(1, subcode);
 					ResultSet rp=ps.executeQuery();

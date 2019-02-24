@@ -1,4 +1,4 @@
-<%@page import="database.DatabaseConnection"%>
+					<%@page import="database.DatabaseConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%String dailyattend[]=null,date=null;
@@ -15,15 +15,57 @@
     }
     catch(Exception e)
     {}
-    %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    %>					  
+																	
+							   
+										  
+												   
+																														   
+					 
+	 
+											 
+			  
+	 
+		
+															   
+											   
+	 
+					  
+	  
+	  
+<!doctype html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<title>Check Daily Attendance</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Student Registration Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- fonts -->
+	
+	<!-- /fonts -->
+	<!-- css -->
+	<link href="css/bootstrap.css" rel="stylesheet" type='text/css' media="all" />
+	<link href="css/assign_subjects_session_style.css" rel="stylesheet" type='text/css' media="all" />
+	<!-- /css -->
 </head>
+
+
+
 <body>
-<h1>Attendance</h1><br>
+					<div class="content-agileits">
+		<h1 class="title"> Daily Attendance</h1>
+		<div class="left">   <br>
 Total Attendance=<%=tattend[1]+"/"+tattend[0] %><br>
 <%
 if(date!=null)
@@ -42,8 +84,61 @@ if(date!=null)
 <br>To Check date wise<br>
 Choose date
 <form action="fetchattendancedatewise">
-<input type="date" name="date"><br>
-<input type="submit">
-</form>
+													
+  
+			  
+ 
+						 
+	 
+																		 
+	 
+		
+	 
+																						   
+	 
+ 
+
+	
+		
+			
+					
+					<h4 style="color:#4CAF50">Total Attendance=0/1</h4>
+					
+					<br><br>
+					<h4 style="color:#4CAF50">To Check Date Wise</h4>
+					
+<br><br>
+
+					
+				<div class="form-group">
+					<label for="lastname" class="control-label">Select Date</label>
+					<input type="Date" name="date" class="form-control" id="lastname" placeholder="Select Date" data-error="Select Date " required>
+
+
+					<div class="help-block with-errors"></div>
+				</div>
+				
+				
+				
+				<div class="form-group">
+					<button type="submit" class="btn btn-lg">Submit</button>
+				</div>
+				
+			</form>
+			
+		</div>
+		
+		<div class="right"></div>
+		<div class="clear"></div>
+	</div>
+	<p class="copyright-w3ls">Made with<span style="font-size:150%;color:red;"> &hearts;</span></p>
+	<!-- js -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- //js -->
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/validator.min.js"></script>
+	<!-- /js files -->
 </body>
+
 </html>

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.DatabaseConnection;
 import model.Student;
@@ -28,7 +29,21 @@ public class GetExamResult extends HttpServlet {
 		PrintWriter out= response.getWriter();
 		String header,sem;
 		Student stud = new Student();
-		String roll=request.getParameter("roll_no");
+		String roll;//=request.getParameter("roll_no");
+		HttpSession sessio=request.getSession();
+		if(sessio.getAttribute("susername")!=null)
+		{
+			roll=new DatabaseConnection().getRoll((String)sessio.getAttribute("susername"));
+		}
+		else if(request.getParameter("roll_no") !=null)
+		{
+			roll =request.getParameter("roll_no");
+		}
+		else
+		{
+			response.sendRedirect("result_choose_roll.jsp");
+			return;
+		}
 		try {
 			Connection con=DatabaseConnection.getCon();
 			PreparedStatement p=con.prepareStatement("select max(semester) from  resultreleased group by roll_no having roll_no=?");
